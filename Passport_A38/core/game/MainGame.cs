@@ -23,7 +23,7 @@ public class MainGame
             + "|#####################zZT#########|"
             + "[ (°: ]_v______________^____[ :°) ]"
             + "|######zZT########################|"
-            + "[ (°: ]_X______________^____[ :°) ]"
+            + "[ (°: ]_X______________v____[ :°) ]"
             + "|######zZT############zZT#########|"
             + "[ (°: ]_X__________|___X____[ :°) ]"
             + "|######zZT############zZT#########|"
@@ -33,7 +33,7 @@ public class MainGame
             + "|######zZT############zZT#########|"
             + "[ (°: ]_X______________^____[ :°) ]"
             + "|######zZT########################|"
-            + "[ (°: ]_^_________________________>";
+            + "[ (°: ]_^_________________________>";    //TODO: This is the easy level. Make a hard one and select it by the level selector on the start screen
 
         var main = new MainGame();
         
@@ -50,7 +50,7 @@ public class MainGame
         
         _gameMap = new GameMap(map);
         
-        var player = new Player(new Vector2(33,18));
+        var player = new Player(new Vector2(7,18),_gameMap.Forms[0]);    //TODO: normal 33,18
 
         objects.Add(player);
         
@@ -64,7 +64,24 @@ public class MainGame
             //draw screen
             if (Updater.Update)
             {
-                Gui.Draw(_gameMap, objects);
+                switch (Gui.Screen)
+                {
+                    case Screen.Game:
+                    {
+                        Gui.DrawGameScreen(_gameMap, objects);
+                        break;
+                    }
+                    case Screen.Counter:
+                    {
+                        Gui.DrawCounterScreen(player.Counter, player);
+                        break;
+                    }
+                    case Screen.Start:
+                    {
+                        
+                        break;
+                    }
+                }
                 Updater.Update = false;
             }
         }
@@ -72,6 +89,4 @@ public class MainGame
         
         //TODO: make re/start screen }
     }
-
-    public List<GameObject> Objects { get; }
 }

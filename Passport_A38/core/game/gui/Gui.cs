@@ -1,4 +1,6 @@
-﻿using Passport_A38.core.game.gameobject;
+﻿using System.Reflection;
+using Microsoft.Win32.SafeHandles;
+using Passport_A38.core.game.gameobject;
 using Passport_A38.core.game.map;
 
 namespace Passport_A38.core.game.gui;
@@ -21,7 +23,71 @@ public static class Gui
         
     }
 
-    public static void Draw(GameMap map, List<GameObject> inputObjects)
+    public static void DrawStartScreen()
+    {
+        //TODO: implement    
+    }
+
+    public static void DrawCounterScreen(string counter,Player player)
+    {
+        Console.Clear();
+        
+        var lines = File.ReadAllLines("screens/1a.guiscreen");
+
+        var first = false;
+        int i = 0;
+        foreach (var line in lines)
+        {
+            var x = line;
+            if (player.Needed.Number == -1 && player.Counter.Equals("0:a") && i==21) //end of search
+            {
+                Console.WriteLine("# ask for passport 39: q          #");
+            }
+            else if (counter.Equals(player.Needed.Counter))
+            {
+                if (x.Contains('°'))
+                {
+                    x = x.Replace("°",player.Needed.Colour);
+                    while (x.Length<35)
+                    {
+                        x= x.Insert(x.Length-2, " ");
+                    }
+                }
+                else if (x.Contains('*'))
+                {
+                    x= x.Replace("*",player.Needed.Counter);
+                    while (x.Length<35)
+                    {
+                        x= x.Insert(x.Length-2, " ");
+                    }
+                }
+                if (x.Contains('~'))
+                {
+                    x= x.Replace("~"," ");
+                }
+            }
+            else
+            {
+                if(x.Contains('~'))
+                {
+                    if (!first)
+                    {
+                        x = "# [counter:] Sorry, wrong counter!#";
+                        first = true;
+                    }
+                    else
+                    {
+                        x = "#                                 #";
+                    }
+                }
+            }
+
+            Console.WriteLine(x);
+            i++;
+        }
+    }
+
+    public static void DrawGameScreen(GameMap map, List<GameObject> inputObjects)
     {
         List<GameObject> objects = new List<GameObject>(inputObjects);
 
@@ -55,7 +121,7 @@ public static class Gui
         //score:
         if (player is null)
             return;
-        for (var i = 0; i < map.Tiles.GetLength(1); i++)
+        for (var i = 0; i < map.Forms.Count; i++)
         {
             if (i < player.Score)
             {
@@ -66,9 +132,9 @@ public static class Gui
                 Console.Write("0");
             }
         }
-        Console.WriteLine();
-        
         //info:
+        Console.WriteLine();
+        //Console.WriteLine("Next form: "+player.Needed.Counter);
         Console.WriteLine("move: arrow keys, interact: e      ");
 
     }
