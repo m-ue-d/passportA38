@@ -1,0 +1,15 @@
+C:\Users\fabia\Documents\Schule\3_AHIF\POS\Workspace\Passport_A38\Passport_A38\obj\Debug\net6.0\Passport_A38.csproj.AssemblyReference.cache
+C:\Users\fabia\Documents\Schule\3_AHIF\POS\Workspace\Passport_A38\Passport_A38\obj\Debug\net6.0\Passport_A38.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fabia\Documents\Schule\3_AHIF\POS\Workspace\Passport_A38\Passport_A38\obj\Debug\net6.0\Passport_A38.AssemblyInfoInputs.cache
+C:\Users\fabia\Documents\Schule\3_AHIF\POS\Workspace\Passport_A38\Passport_A38\obj\Debug\net6.0\Passport_A38.AssemblyInfo.cs
+C:\Users\fabia\Documents\Schule\3_AHIF\POS\Workspace\Passport_A38\Passport_A38\obj\Debug\net6.0\Passport_A38.csproj.CoreCompileInputs.cache
+C:\Users\fabia\Documents\Schule\3_AHIF\POS\Workspace\Passport_A38\Passport_A38\bin\Debug\net6.0\Passport_A38.exe
+C:\Users\fabia\Documents\Schule\3_AHIF\POS\Workspace\Passport_A38\Passport_A38\bin\Debug\net6.0\Passport_A38.deps.json
+C:\Users\fabia\Documents\Schule\3_AHIF\POS\Workspace\Passport_A38\Passport_A38\bin\Debug\net6.0\Passport_A38.runtimeconfig.json
+C:\Users\fabia\Documents\Schule\3_AHIF\POS\Workspace\Passport_A38\Passport_A38\bin\Debug\net6.0\Passport_A38.dll
+C:\Users\fabia\Documents\Schule\3_AHIF\POS\Workspace\Passport_A38\Passport_A38\bin\Debug\net6.0\Passport_A38.pdb
+C:\Users\fabia\Documents\Schule\3_AHIF\POS\Workspace\Passport_A38\Passport_A38\obj\Debug\net6.0\Passport_A38.dll
+C:\Users\fabia\Documents\Schule\3_AHIF\POS\Workspace\Passport_A38\Passport_A38\obj\Debug\net6.0\refint\Passport_A38.dll
+C:\Users\fabia\Documents\Schule\3_AHIF\POS\Workspace\Passport_A38\Passport_A38\obj\Debug\net6.0\Passport_A38.pdb
+C:\Users\fabia\Documents\Schule\3_AHIF\POS\Workspace\Passport_A38\Passport_A38\obj\Debug\net6.0\Passport_A38.genruntimeconfig.cache
+C:\Users\fabia\Documents\Schule\3_AHIF\POS\Workspace\Passport_A38\Passport_A38\obj\Debug\net6.0\ref\Passport_A38.dll
