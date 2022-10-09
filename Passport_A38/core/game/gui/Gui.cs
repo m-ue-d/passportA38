@@ -21,6 +21,8 @@ public static class Gui
         
         Console.WriteLine("Lost");
         
+        //TODO: Credits
+        
     }
 
     public static void DrawStartScreen()
@@ -32,7 +34,7 @@ public static class Gui
     {
         Console.Clear();
         
-        var lines = File.ReadAllLines("screens/1a.guiscreen");
+        var lines = File.ReadAllLines("screens/0-a.guiscreen");
 
         var first = false;
         int i = 0;
