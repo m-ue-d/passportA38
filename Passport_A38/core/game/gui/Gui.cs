@@ -30,7 +30,7 @@ public static class Gui
         //TODO: implement    
     }
 
-    public static void DrawCounterScreen(string counter,Player player)
+    public static void DrawCounterScreen(string counter,Player player, GameMap map)
     {
         Console.Clear();
         
@@ -38,10 +38,10 @@ public static class Gui
 
         var first = false;
         int i = 0;
-        foreach (var line in lines)
+        foreach (var line in lines) //TODO: # Counter: What do you want? # text message before player presses f (use c for asking)
         {
             var x = line;
-            if (player.Needed.Number == -1 && player.Counter.Equals("0:a") && i==21) //end of search
+            if (player.Next.Number == -1 && player.Counter.Equals("0:a") && i==21) //end of search (21 is the line, where the text will be displayed)
             {
                 Console.WriteLine("# ask for passport 39: q          #");
             }
@@ -49,7 +49,8 @@ public static class Gui
             {
                 if (x.Contains('°'))
                 {
-                    x = x.Replace("°",player.Needed.Colour);
+
+                    x = x.Replace("°", player.Next.Colour);
                     while (x.Length<35)
                     {
                         x= x.Insert(x.Length-2, " ");
@@ -57,7 +58,7 @@ public static class Gui
                 }
                 else if (x.Contains('*'))
                 {
-                    x= x.Replace("*",player.Needed.Counter);
+                    x= x.Replace("*",player.Next.Counter);
                     while (x.Length<35)
                     {
                         x= x.Insert(x.Length-2, " ");

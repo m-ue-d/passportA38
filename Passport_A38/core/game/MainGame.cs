@@ -50,7 +50,7 @@ public class MainGame
         
         _gameMap = new GameMap(map);
         
-        var player = new Player(new Vector2(7,18),_gameMap.Forms[0]);    //TODO: normal 33,18
+        var player = new Player(new Vector2(33,18),_gameMap.Forms[0], _gameMap.Forms[1]);
 
         objects.Add(player);
         
@@ -73,7 +73,7 @@ public class MainGame
                     }
                     case Screen.Counter:
                     {
-                        Gui.DrawCounterScreen(player.Counter, player);
+                        Gui.DrawCounterScreen(player.Counter, player, _gameMap);
                         break;
                     }
                     case Screen.Start:

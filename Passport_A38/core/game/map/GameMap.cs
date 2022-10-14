@@ -1,9 +1,8 @@
-﻿using Passport_A38.core.game.controller;
-using Passport_A38.core.game.gameobject;
+﻿using Passport_A38.core.game.gameobject;
 
 namespace Passport_A38.core.game.map;
 
-public class GameMap
+public class GameMap 
 {
     private char[,] _tiles = new char[19, 35];
     private List<Form> _forms = new();
@@ -17,6 +16,7 @@ public class GameMap
         {5,"black"},
         {6,"white"}
     };
+    private const int seed=5;   //nach seeds drücken 
 
     public GameMap(string inputTiles)
     {
@@ -28,9 +28,10 @@ public class GameMap
             }
         }
 
-        var random = new Random();    //TODO: Add seed
+        var random = new Random(seed);
+        var randNum = random.Next(3,21);
         _forms.Add(new Form(0,"red","0:a"));    //First counter is always the first one you need to go to
-        for (int i = 1; i < 3; i++)
+        for (int i = 1; i < randNum; i++)
         {
             Form form = new();
             var temp = random.Next(1,8)+":"+(random.Next(0,2)==0? "a":"b");    //from first to most upper floor left/right
@@ -56,7 +57,7 @@ public class GameMap
         if (!PlayerAtCounter(player))
             return null;
 
-        var counter = 7-(player.Pos.Y-4)/2+":"; //TODO: de-hard-code this
+        var counter = (CounterCount()- 1)/2 - (player.Pos.Y - 4) / 2 + ":";
 
         if (player.Pos.X <(double)_tiles.GetLength(1)/2)
         {
@@ -64,6 +65,23 @@ public class GameMap
         }
         return counter + "b";
 
+    }
+
+    /*
+     * Returns the number of counters
+     */
+    private int CounterCount()
+    {
+        int num = 0;
+        foreach (var character in _tiles)
+        {
+            if (character.Equals('°'))  //"Kopf" des Counters. Seite egal
+            {
+                num++;
+            }
+        }
+
+        return num;
     }
 
     /*
