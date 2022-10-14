@@ -1,4 +1,5 @@
 ﻿using System.Numerics;
+using System.Runtime.InteropServices;
 using Passport_A38.core.game.controller;
 using Passport_A38.core.game.gameobject;
 using Passport_A38.core.game.gui;
@@ -33,7 +34,7 @@ public class MainGame
             + "|######zZT############zZT#########|"
             + "[ (°: ]_X______________^____[ :°) ]"
             + "|######zZT########################|"
-            + "[ (°: ]_^_________________________>";    //TODO: This is the easy level. Make a hard one and select it by the level selector on the start screen
+            + "[ (°: ]_^_________________________>";    //TODO: This is the easy level. Make a hard one and select it by the level selector on the start screen (random level generation?)
 
         var main = new MainGame();
         
@@ -58,6 +59,13 @@ public class MainGame
         PlayerInputHandler playerHandler = new PlayerInputHandler(player,_gameMap);
         Thread keyHandler = new Thread(new ThreadStart(playerHandler.ReadKeyData));
         keyHandler.Start();
+        
+        //SoundController -> windows only =(
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+        {
+            SoundController soundController = new SoundController();
+            soundController.StartBackgroundMusic();
+        }
         
         while (Updater.Active)
         {

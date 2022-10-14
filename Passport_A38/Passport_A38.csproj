@@ -7,4 +7,16 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="resources\sound" />
+    <Folder Include="resources\music" />
+    <None Update="resources\music\HotelMain.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Windows.Extensions" Version="7.0.0-rc.2.22472.3" />
+  </ItemGroup>
+
 </Project>

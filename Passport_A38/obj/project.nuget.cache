@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "l4yrP8r7+oGWj/XRPgGQlOTyx9XWk/NLD1HjrigBP+CyGX3Us++piv9ahQDJma/JB5vlGSRe8UUJEt1DRolokw==",
+  "dgSpecHash": "15Xuvmo0PHxV33A4UM3hSPZSvWBidsuXYHqWUOLbL0YjBwOvV4ml52CES4lyZmVEq636hPIb3D9J97ip6DtMEw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\fabia\\Documents\\Schule\\3_AHIF\\POS\\Workspace\\Passport_A38\\Passport_A38\\Passport_A38.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\Admin\\IdeaProjects\\passportA-38\\Passport_A38\\Passport_A38.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.win32.systemevents\\7.0.0-rc.2.22472.3\\microsoft.win32.systemevents.7.0.0-rc.2.22472.3.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\system.drawing.common\\7.0.0-rc.2.22472.3\\system.drawing.common.7.0.0-rc.2.22472.3.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\system.windows.extensions\\7.0.0-rc.2.22472.3\\system.windows.extensions.7.0.0-rc.2.22472.3.nupkg.sha512"
+  ],
   "logs": []
 }
