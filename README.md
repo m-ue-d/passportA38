@@ -21,7 +21,7 @@ The game is a metaphoric example of obtaining permit.
 If you know <b>Asterix</b>, you might more or less know what to do, but if you don't, here you go:
 <ul>
 <li>the game can be closed by pressing the 'x' key on your keyboard</li>
-<li>the player is symbolized as '§' and can move by pressing the arrow keys.</li>
+<li>the player is symbolized by '§' and can be moved by pressing the arrow keys.</li>
 <li>immovable objects are marked as '#', '|' or '[ . ]'</li>
 <li>you can move up or down stairs. They are marked as <b>'X' for up/down, '^' for up and 'v' for down</b></li>
 <li>a counter is symbolized as '[ (°: ]'</li>
