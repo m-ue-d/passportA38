@@ -9,8 +9,10 @@
 
   <ItemGroup>
     <Folder Include="resources\sound" />
-    <Folder Include="resources\music" />
     <None Update="resources\music\HotelMain.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\music\MainTheme.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
