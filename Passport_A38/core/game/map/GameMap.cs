@@ -2,7 +2,7 @@
 
 namespace Passport_A38.core.game.map;
 
-public class GameMap
+public class GameMap 
 {
     private char[,] _tiles = new char[19, 35];
     private List<Form> _forms = new();
