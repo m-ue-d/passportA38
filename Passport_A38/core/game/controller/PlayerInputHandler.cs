@@ -8,13 +8,13 @@ namespace Passport_A38.core.game.controller;
 public class PlayerInputHandler
 {
 
-    private Player player;
-    private GameMap map;
+    private readonly Player _player;
+    private readonly GameMap _map;
     
     public PlayerInputHandler(Player player, GameMap map)
     {
-        this.player = player;
-        this.map = map;
+        _player = player;
+        _map = map;
     }
 
     public void ReadKeyData()
@@ -35,45 +35,45 @@ public class PlayerInputHandler
                 {
                     case ConsoleKey.LeftArrow:
                     {
-                        if (map.Tiles[(int) player.Pos.Y, (int) player.Pos.X - 1] is not '_' and not '^' and not 'v'
+                        if (_map.Tiles[(int) _player.Pos.Y, (int) _player.Pos.X - 1] is not '_' and not '^' and not 'v'
                             and not 'X')
                             break;
-                        player.Pos = Vector2.Add(player.Pos, new Vector2(-1, 0));
+                        _player.Pos = Vector2.Add(_player.Pos, new Vector2(-1, 0));
                         Updater.Update = true;
                         break;
                     }
                     case ConsoleKey.RightArrow:
                     {
-                        if (map.Tiles[(int) player.Pos.Y, (int) player.Pos.X + 1] is not '_' and not '^' and not 'v'
+                        if (_map.Tiles[(int) _player.Pos.Y, (int) _player.Pos.X + 1] is not '_' and not '^' and not 'v'
                             and not 'X')
                             break;
-                        player.Pos = Vector2.Add(player.Pos, new Vector2(1, 0));
+                        _player.Pos = Vector2.Add(_player.Pos, new Vector2(1, 0));
                         Updater.Update = true;
                         break;
                     }
                     case ConsoleKey.UpArrow:
                     {
-                        if (map.Tiles[(int) player.Pos.Y, (int) player.Pos.X] is not '^' and not 'X')
+                        if (_map.Tiles[(int) _player.Pos.Y, (int) _player.Pos.X] is not '^' and not 'X')
                             break;
-                        player.Pos = Vector2.Add(player.Pos, new Vector2(0, -2));
+                        _player.Pos = Vector2.Add(_player.Pos, new Vector2(0, -2));
                         Updater.Update = true;
                         break;
                     }
                     case ConsoleKey.DownArrow:
                     {
-                        if (map.Tiles[(int) player.Pos.Y, (int) player.Pos.X] is not 'v' and not 'X')
+                        if (_map.Tiles[(int) _player.Pos.Y, (int) _player.Pos.X] is not 'v' and not 'X')
                             break;
-                        player.Pos = Vector2.Add(player.Pos, new Vector2(0, 2));
+                        _player.Pos = Vector2.Add(_player.Pos, new Vector2(0, 2));
                         Updater.Update = true;
                         break;
                     }
                     case ConsoleKey.E:
                     {
-                        var counter = map.GetCounter(player);
+                        var counter = _map.GetCounter(_player);
                         if (counter != null)
                         {
                             Gui.Screen = Screen.Counter;
-                            player.Counter = counter;
+                            _player.Counter = counter;
                             Updater.Update = true;
                         }
 
@@ -87,25 +87,40 @@ public class PlayerInputHandler
                 {
                     case ConsoleKey.F:
                     {
-                        if (player.Needed.Counter.Equals(player.Counter))
-                        {
-                            player.Score += 1;
+                        _player.InteractionState +=1;    //change interaction state
 
-                            if (player.Score<map.Forms.Count)
+                        if (_player.Needed.Counter.Equals(_player.Counter))
+                        {
+                            _player.Score += 1;
+
+
+                        if(_player.InteractionState==2){
+                            if (_player.Score == _map.Forms.Count)
                             {
-                                player.Needed = map.Forms[player.Score];
+                                _player.Next = new Form(-1, _map.Forms[1].Colour, _map.Forms[1].Counter);
+                                _player.Needed = _map.Forms[0];
                             }
-                            else
+                            else if (_player.Score < _map.Forms.Count)
                             {
-                                player.Needed = new Form(-1, "black", "i know what to do now >:]");
-                                break;
+                                _player.Needed = _map.Forms[_player.Score];
+                                if (_player.Score + 1 < _map.Forms.Count)
+                                {
+                                    _player.Next = _map.Forms[_player.Score + 1];
+                                }
+                                else
+                                {
+                                    _player.Next = new Form(_map.Forms.Count, "black", "0:a");
+                                }
                             }
+                        }
+
+                        Updater.Update = true;
                         }
                         break;
                     }
                     case ConsoleKey.Q:
                     {
-                        if (player.Needed.Number == -1)
+                        if (_player.Next.Number == -1)
                         {
                             Updater.Win = true;
                             Updater.Active = false;
@@ -114,6 +129,7 @@ public class PlayerInputHandler
                     }
                     case ConsoleKey.E:
                     {
+                        _player.InteractionState = 0;    //reset InteractionState
                         Gui.Screen = Screen.Game;
                         Updater.Update = true;
                         break;
