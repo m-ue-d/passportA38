@@ -7,11 +7,13 @@ This game will be very minimalistic, because i have a lack of time, other stuff 
 <ul>
 <li>"working version (kind of)" 🟢</li>
 <li>funky backgound music 🟢</li>
-<li>bug fixing (actually playable) 🔴</li>
+<li>bug fixing (actually playable) 🟢</li>
 <li>start+end -screens 🔴</li>
 <li>random level generation (with difficulty) 🔴</li>
 <li>more ascii art for counters 🔴</li>
 <li>sounds for interaction 🔴</li>
+<li>optimizations 🔴</li>
+<li>random additions? 🔴</li>
 <li>release 🔴</li>
 </ul>
 
