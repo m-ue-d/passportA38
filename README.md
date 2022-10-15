@@ -13,7 +13,7 @@ This game will be very minimalistic, because i have a lack of time, other stuff 
 <li>more ascii art for counters 🔴</li>
 <li>sounds for interaction 🔴</li>
 <li>optimizations 🔴</li>
-<li>random additions? 🔴</li>
+<li>random additions? (level loading, saving, score-board, option menu) 🔴</li>
 <li>release 🔴</li>
 </ul>
 
