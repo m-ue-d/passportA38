@@ -2,5 +2,5 @@
 
 public enum Screen
 {
-    Game,Counter,Start
+    Game,Counter,Start,Restart
 }

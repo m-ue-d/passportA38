@@ -1,24 +1,43 @@
-﻿namespace Passport_A38.core.game.controller;
+﻿using System.Runtime.InteropServices;
+using Passport_A38.core.game.gui;
+
+namespace Passport_A38.core.game.controller;
 
 using System;
 using System.Media;
 
-public class SoundController
+public static class SoundController
 {
-    private SoundPlayer _player;
+    private static readonly SoundPlayer? Player;
 
-    public SoundController()
+    static SoundController()
     {
-        _player = new SoundPlayer();
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            Player = new SoundPlayer();
     }
+    
+    public static void StartBackgroundMusic(Screen screen)
+    {
+        if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            return;
+        
+        //TODO: fade song out before other plays
 
-    public void StartBackgroundMusic()
-    {
-        _player.SoundLocation = AppDomain.CurrentDomain.BaseDirectory + "\\resources\\music\\HotelMain.wav";
-        _player.PlayLooping();
+        if (Player == null) return;
+        Player.SoundLocation = screen switch
+        {
+            Screen.Game => AppDomain.CurrentDomain.BaseDirectory + "\\resources\\music\\Building.wav",
+            Screen.Start => AppDomain.CurrentDomain.BaseDirectory + "\\resources\\music\\Title.wav",
+            Screen.Counter => AppDomain.CurrentDomain.BaseDirectory + "\\resources\\music\\Building.wav",
+            _ => AppDomain.CurrentDomain.BaseDirectory + "\\resources\\music\\Title.wav"
+        };
+
+        Player.PlayLooping();
     }
-    public void StopBackgroundMusic()
+    public static void StopBackgroundMusic()
     {
-        _player.Stop();
+        if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            return;
+        Player?.Stop();
     }
 }

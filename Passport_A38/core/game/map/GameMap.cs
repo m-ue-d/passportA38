@@ -5,8 +5,8 @@ namespace Passport_A38.core.game.map;
 public class GameMap 
 {
     private char[,] _tiles = new char[19, 35];
-    private List<Form> _forms = new();
-    private Dictionary<int, string> _colours = new()
+    private readonly List<Form> _forms = new();
+    private readonly Dictionary<int, string> _colours = new()
     {
         {0,"red"},
         {1,"green"},
@@ -16,13 +16,13 @@ public class GameMap
         {5,"black"},
         {6,"white"}
     };
-    private const int seed=5;   //nach seeds drücken 
+    private const int seed=5;
 
     public GameMap(string inputTiles)
     {
         for (int k = 0, t = 0; k < _tiles.GetLength(0); k++)
         {
-            for (int i = 0; i < _tiles.GetLength(1); i++, t++)
+            for (var i = 0; i < _tiles.GetLength(1); i++, t++)
             {
                 _tiles[k, i] = inputTiles[t];
             }
@@ -30,8 +30,8 @@ public class GameMap
 
         var random = new Random(seed);
         var randNum = random.Next(3,21);
-        _forms.Add(new Form(0,"red","0:a"));    //First counter is always the first one you need to go to
-        for (int i = 1; i < randNum; i++)
+        _forms.Add(new Form(0,"red","0:a"));    //first counter is always the first one you need to go to
+        for (var i = 1; i < randNum; i++)
         {
             Form form = new();
             var temp = random.Next(1,8)+":"+(random.Next(0,2)==0? "a":"b");    //from first to most upper floor left/right
@@ -57,6 +57,7 @@ public class GameMap
         if (!PlayerAtCounter(player))
             return null;
 
+        // ReSharper disable once PossibleLossOfFraction
         var counter = (CounterCount()- 1)/2 - (player.Pos.Y - 4) / 2 + ":";
 
         if (player.Pos.X <(double)_tiles.GetLength(1)/2)
@@ -75,7 +76,7 @@ public class GameMap
         int num = 0;
         foreach (var character in _tiles)
         {
-            if (character.Equals('°'))  //"Kopf" des Counters. Seite egal
+            if (character.Equals('°'))  //"head" of counter. Side doesn't matter
             {
                 num++;
             }
@@ -87,20 +88,13 @@ public class GameMap
     /*
      * Returns whether the player is standing next to a counter or not.
      */
-    private bool PlayerAtCounter(Player player)
+    private bool PlayerAtCounter(GameObject player)
     {
         return _tiles[(int) player.Pos.Y, (int) player.Pos.X - 1] == ']' ||
                _tiles[(int) player.Pos.Y, (int) player.Pos.X + 1] == '[';
     }
 
-    public char[,] Tiles
-    {
-        get => _tiles;
-        set => _tiles=value;
-    }
+    public char[,] Tiles => _tiles;
 
-    public List<Form> Forms 
-    {
-        get => _forms;
-    }
+    public List<Form> Forms => _forms;
 }

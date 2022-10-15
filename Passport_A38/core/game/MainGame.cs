@@ -10,7 +10,7 @@ namespace Passport_A38.core.game;
 public class MainGame
 {
 
-    private GameMap _gameMap;
+    private GameMap? _gameMap;
     private List<GameObject> objects= new();
 
     public static void Main(string[] args)
@@ -47,7 +47,6 @@ public class MainGame
      */
     private void Start(string map)
     {
-        //TODO: make re/start screen {
         
         _gameMap = new GameMap(map);
         
@@ -55,46 +54,43 @@ public class MainGame
 
         objects.Add(player);
         
-        //initialize keyhandler
-        PlayerInputHandler playerHandler = new PlayerInputHandler(player,_gameMap);
-        Thread keyHandler = new Thread(new ThreadStart(playerHandler.ReadKeyData));
+        //initialize key-handler
+        var playerHandler = new PlayerInputHandler(player,_gameMap);
+        var keyHandler = new Thread(playerHandler.ReadKeyData);
         keyHandler.Start();
         
-        //SoundController -> windows only =(
-        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-        {
-            SoundController soundController = new SoundController();
-            soundController.StartBackgroundMusic();
-        }
-        
+        SoundController.StartBackgroundMusic(Screen.Start);
+
         while (Updater.Active)
         {
             //draw screen
-            if (Updater.Update)
+            if (!Updater.Update) continue;
+                
+            switch (Gui.Screen)
             {
-                switch (Gui.Screen)
+                case Screen.Game:
                 {
-                    case Screen.Game:
-                    {
-                        Gui.DrawGameScreen(_gameMap, objects);
-                        break;
-                    }
-                    case Screen.Counter:
-                    {
-                        Gui.DrawCounterScreen(player.Counter, player, _gameMap);
-                        break;
-                    }
-                    case Screen.Start:
-                    {
-                        
-                        break;
-                    }
+                    Gui.DrawGameScreen(_gameMap, objects);
+                    break;
                 }
-                Updater.Update = false;
+                case Screen.Counter:
+                {
+                    Gui.DrawCounterScreen(player.Counter, player);
+                    break;
+                }
+                case Screen.Start:
+                {
+                    Gui.DrawStartScreen();
+                    break;
+                }
+                case Screen.Restart:
+                {
+                    //TODO: make restart screen }
+                    break;
+                }
             }
+            Updater.Update = false;
         }
         Gui.DrawEndScreen(Updater.Win);
-        
-        //TODO: make re/start screen }
     }
 }

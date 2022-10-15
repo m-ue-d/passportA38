@@ -165,11 +165,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Admin\\IdeaProjects\\passportA-38\\Passport_A38\\Passport_A38.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\RiderProjects\\passportA-38\\Passport_A38\\Passport_A38.csproj",
       "projectName": "Passport_A38",
-      "projectPath": "C:\\Users\\Admin\\IdeaProjects\\passportA-38\\Passport_A38\\Passport_A38.csproj",
+      "projectPath": "C:\\Users\\Admin\\RiderProjects\\passportA-38\\Passport_A38\\Passport_A38.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Admin\\IdeaProjects\\passportA-38\\Passport_A38\\obj\\",
+      "outputPath": "C:\\Users\\Admin\\RiderProjects\\passportA-38\\Passport_A38\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"

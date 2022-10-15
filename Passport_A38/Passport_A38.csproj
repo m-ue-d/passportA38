@@ -8,11 +8,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="resources\music" />
     <Folder Include="resources\sound" />
-    <None Update="resources\music\HotelMain.wav">
+    <Folder Include="resources\screens" />
+    <None Update="resources\music\Title.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="resources\music\MainTheme.wav">
+    <None Update="resources\music\Building.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\screens\0-a.guiscreen">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\screens\start.guiscreen">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

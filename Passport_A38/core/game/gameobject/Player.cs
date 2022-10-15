@@ -13,7 +13,7 @@ public class Player : GameObject
 
     public Form Next { get; set; }  //form after needed
 
-    public byte InteractionState { get; set; } = 0;   //0 or 1: tells you if you started the conversation or if you are able to end it
+    public int InteractionState { get; set; } = 0;   //0 or 1: tells you if you started the conversation or if you are able to end it
 
     public Player(Vector2 pos, Form needed, Form next) : base(pos)
     {
