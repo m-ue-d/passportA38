@@ -21,7 +21,7 @@ public static class SoundController
         if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             return;
         
-        //TODO: fade song out before other plays
+        //TODO: fade song out before other plays (use audio library)
 
         if (Player == null) return;
         Player.SoundLocation = screen switch

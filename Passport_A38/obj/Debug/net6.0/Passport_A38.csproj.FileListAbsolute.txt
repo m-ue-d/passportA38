@@ -63,3 +63,16 @@ C:\Users\Admin\RiderProjects\passportA-38\Passport_A38\bin\Debug\net6.0\resource
 C:\Users\Admin\RiderProjects\passportA-38\Passport_A38\bin\Debug\net6.0\resources\music\Title.wav
 C:\Users\Admin\RiderProjects\passportA-38\Passport_A38\bin\Debug\net6.0\resources\screens\0-a.guiscreen
 C:\Users\Admin\RiderProjects\passportA-38\Passport_A38\bin\Debug\net6.0\resources\screens\start.guiscreen
+C:\Users\fabia\Documents\Schule\3_AHIF\POS\Workspace\Passport_A38\Passport_A38\bin\Debug\net6.0\resources\music\Building.wav
+C:\Users\fabia\Documents\Schule\3_AHIF\POS\Workspace\Passport_A38\Passport_A38\bin\Debug\net6.0\resources\music\Title.wav
+C:\Users\fabia\Documents\Schule\3_AHIF\POS\Workspace\Passport_A38\Passport_A38\bin\Debug\net6.0\resources\screens\0-a.guiscreen
+C:\Users\fabia\Documents\Schule\3_AHIF\POS\Workspace\Passport_A38\Passport_A38\bin\Debug\net6.0\resources\screens\start.guiscreen
+C:\Users\fabia\Documents\Schule\3_AHIF\POS\Workspace\Passport_A38\Passport_A38\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\fabia\Documents\Schule\3_AHIF\POS\Workspace\Passport_A38\Passport_A38\bin\Debug\net6.0\System.Drawing.Common.dll
+C:\Users\fabia\Documents\Schule\3_AHIF\POS\Workspace\Passport_A38\Passport_A38\bin\Debug\net6.0\System.Windows.Extensions.dll
+C:\Users\fabia\Documents\Schule\3_AHIF\POS\Workspace\Passport_A38\Passport_A38\bin\Debug\net6.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\fabia\Documents\Schule\3_AHIF\POS\Workspace\Passport_A38\Passport_A38\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+C:\Users\fabia\Documents\Schule\3_AHIF\POS\Workspace\Passport_A38\Passport_A38\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\fabia\Documents\Schule\3_AHIF\POS\Workspace\Passport_A38\Passport_A38\obj\Debug\net6.0\Passport_A38.csproj.CopyComplete
+C:\Users\fabia\Documents\Schule\3_AHIF\POS\Workspace\Passport_A38\Passport_A38\bin\Debug\net6.0\resources\credits.txt
+C:\Users\fabia\Documents\Schule\3_AHIF\POS\Workspace\Passport_A38\Passport_A38\bin\Debug\net6.0\resources\startup.properties

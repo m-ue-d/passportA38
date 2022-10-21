@@ -2,6 +2,7 @@
 using Passport_A38.core.game.gameobject;
 using Passport_A38.core.game.gui;
 using Passport_A38.core.game.map;
+using Passport_A38.core.game.utility;
 
 namespace Passport_A38.core.game.controller;
 
@@ -19,15 +20,13 @@ public class PlayerInputHandler
 
     public void ReadKeyData()
     {
-        ConsoleKey key;
-
         do
         {
             while (Console.KeyAvailable)
             {
                 var temp = Console.ReadKey(false).Key;
             }
-            key = Console.ReadKey(false).Key;
+            var key = Console.ReadKey(false).Key;
 
             switch (Gui.Screen)
             {
@@ -82,6 +81,12 @@ public class PlayerInputHandler
 
                             break;
                         }
+                        case ConsoleKey.X:
+                        {
+                            Gui.Screen = Screen.End;
+                            Updater.Update = true;
+                            break;
+                        }
                     }
 
                     break;
@@ -102,24 +107,24 @@ public class PlayerInputHandler
                                 {
                                     if (_player.Next.Number == -1) //end of round
                                     {
-                                        Updater.Win = true;
-                                        Updater.Active = false;
+                                        Gui.Screen = Screen.End;
+                                        Updater.Update = true;
                                         break;
                                     }
 
-                                    _player.Score += 1; //change score
+                                    _player.Stats.Score += 1; //change score
 
-                                    if (_player.Score == _map.Forms.Count) //player is at the last needed counter
+                                    if (_player.Stats.Score == _map.Forms.Count) //player is at the last needed counter
                                     {
                                         _player.Next = new Form(-1, _map.Forms[1].Colour, _map.Forms[1].Counter);
                                         _player.Needed = _map.Forms[0];
                                     }
-                                    else if (_player.Score < _map.Forms.Count)
+                                    else if (_player.Stats.Score < _map.Forms.Count)
                                     {
-                                        _player.Needed = _map.Forms[_player.Score];
-                                        if (_player.Score + 1 < _map.Forms.Count)
+                                        _player.Needed = _map.Forms[_player.Stats.Score];
+                                        if (_player.Stats.Score + 1 < _map.Forms.Count)
                                         {
-                                            _player.Next = _map.Forms[_player.Score + 1];
+                                            _player.Next = _map.Forms[_player.Stats.Score + 1];
                                         }
                                         else
                                         {
@@ -140,6 +145,12 @@ public class PlayerInputHandler
                             Updater.Update = true;
                             break;
                         }
+                        case ConsoleKey.X:
+                        {
+                            Gui.Screen = Screen.End;
+                            Updater.Update = true;
+                            break;
+                        }
                     }
 
                     break;
@@ -155,15 +166,61 @@ public class PlayerInputHandler
                             Updater.Update = true;
                             break;
                         }
+                        case ConsoleKey.X:
+                        {
+                            Gui.Screen = Screen.End;
+                            Updater.Update = true;
+                            break;
+                        }
                     }
-
+                    break;
+                }
+                case Screen.End:
+                {
+                    switch (key)
+                    {
+                        case ConsoleKey.X:
+                        {
+                            Updater.End = true;
+                            Updater.Active = false;
+                            break;
+                        }
+                        case ConsoleKey.E:
+                        {
+                            //Restart (map and player)
+                            Properties prop = new Properties(AppDomain.CurrentDomain.BaseDirectory + "\\resources\\startup.properties");
+                            _map.Restart( int.Parse(prop.get("seed")),GameMap.DifficultyDictionary[prop.get("difficulty")],
+                                "        ____________________       "
+                                + " ______|        -<>-        |_____ "
+                                + "|                                 |"
+                                + "|                                 |"
+                                + "[ (°: ]________________v____[ :°) ]"
+                                + "|#####################zZT#########|"
+                                + "[ (°: ]_v______________^____[ :°) ]"
+                                + "|######zZT########################|"
+                                + "[ (°: ]_X______________v____[ :°) ]"
+                                + "|######zZT############zZT#########|"
+                                + "[ (°: ]_X__________|___X____[ :°) ]"
+                                + "|######zZT############zZT#########|"
+                                + "[ (°: ]_X__________|___^____[ :°) ]"
+                                + "|######zZT########################|"
+                                + "[ (°: ]_X__________|___v____[ :°) ]"
+                                + "|######zZT############zZT#########|"
+                                + "[ (°: ]_X______________^____[ :°) ]"
+                                + "|######zZT########################|"
+                                + "[ (°: ]_^_________________________>");   //TODO: make level generator (used with difficulty)
+                            _player.Restart(new Vector2(33,18),_map.Forms[0], _map.Forms[1]);
+                            
+                            Gui.Screen = Screen.Start;
+                            Updater.Update = true;
+                            break;
+                        }
+                    }
                     break;
                 }
             }
 
             Thread.Sleep(100);
-        }while (key != ConsoleKey.X);
-        
-        Updater.Active = false;
+        }while (!Updater.End);
     }
 }

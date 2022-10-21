@@ -1,7 +1,9 @@
-﻿using System.Reflection;
-using Microsoft.Win32.SafeHandles;
+﻿using System.Diagnostics.Tracing;
+using System.Globalization;
+using Passport_A38.core.game.controller;
 using Passport_A38.core.game.gameobject;
 using Passport_A38.core.game.map;
+using Passport_A38.core.game.utility;
 
 namespace Passport_A38.core.game.gui;
 
@@ -10,19 +12,66 @@ public static class Gui
 
     public static Screen Screen { get; set; } = Screen.Start;
 
-    public static void DrawEndScreen(bool win)
+    public static void DrawEndScreen(Player player, Thread creditThread)
     {
         Console.Clear();
-        if (win)
+        switch (creditThread.ThreadState)
         {
-            Console.WriteLine("Won");
-            return;
+            case ThreadState.Unstarted:
+            {
+
+                creditThread.Start(player.Stats);
+                break;
+
+            }
+            case ThreadState.Stopped:
+            {
+
+                creditThread = new Thread(Credits);
+
+                creditThread.Start(player.Stats);
+
+                break;
+
+            }
         }
+    }
+
+    public static void Credits(object? stats)
+    {
+        if (stats is not Stats) { return; }
+        var playerStats = (Stats)stats;
         
-        Console.WriteLine("Lost");
         
-        //TODO: Credits
-        
+        var lines = File.ReadAllLines(AppDomain.CurrentDomain.BaseDirectory +"\\resources\\credits.txt");
+        foreach (var line in lines)
+        {
+            if (!Screen.Equals(Screen.End) || !Updater.Active)
+                return;
+            
+            var i = (int)(line.Contains('%') ? char.GetNumericValue(line[line.IndexOf("%", StringComparison.Ordinal) + 1]) : -1);
+            WriteStat(line,i,playerStats.GetAt[i]);
+
+            Thread.Sleep(200);
+        }
+    }
+
+    private static void WriteStat(string line, int i, object s)
+    {
+        if (line.Contains("%"+i))
+        {
+            var temp = line.Split("%"+i);
+            var x = temp[0]+s;
+                
+            while (x.Length<GameMap.width-1) {x += " ";}
+            x += "#";
+
+            Console.WriteLine(x);
+        }
+        else
+        {
+            Console.WriteLine(line);
+        }
     }
 
     public static void DrawStartScreen()
@@ -42,7 +91,7 @@ public static class Gui
         
         var lines = File.ReadAllLines(AppDomain.CurrentDomain.BaseDirectory + "\\resources\\screens\\0-a.guiscreen");
         
-        Console.WriteLine("Score: "+player.Score+", InteractionState: "+player.InteractionState+", Counter: "+player.Counter+", Next: "+player.Next.Counter+", Needed: "+player.Needed.Counter);
+        Console.WriteLine("Score: "+player.Stats.Score+", InteractionState: "+player.InteractionState+", Counter: "+player.Counter+", Next: "+player.Next.Counter+", Needed: "+player.Needed.Counter);
         Console.WriteLine();
 
         var first = true;
@@ -77,7 +126,7 @@ public static class Gui
                     {
 
                         x = x.Replace("°", player.Next.Colour);
-                        while (x.Length < 35)
+                        while (x.Length < GameMap.width)
                         {
                             x = x.Insert(x.Length - 2, " ");
                         }
@@ -85,7 +134,7 @@ public static class Gui
                     else if (x.Contains('*'))
                     {
                         x = x.Replace("*", player.Next.Counter);
-                        while (x.Length < 35)
+                        while (x.Length < GameMap.width)
                         {
                             x = x.Insert(x.Length - 2, " ");
                         }
@@ -209,7 +258,7 @@ public static class Gui
             return;
         for (var i = 0; i < map.Forms.Count; i++)
         {
-            if (i < player.Score)
+            if (i < player.Stats.Score)
             {
                 Console.Write("+");
             }

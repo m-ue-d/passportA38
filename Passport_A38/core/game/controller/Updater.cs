@@ -4,5 +4,5 @@ public static class Updater
 {
     public static bool Update { get; set; } = true;
     public static bool Active { get; set; } = true;
-    public static bool Win { get; set; }
+    public static bool End { get; set; }
 }

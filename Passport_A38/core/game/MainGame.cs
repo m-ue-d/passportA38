@@ -47,7 +47,7 @@ public class MainGame
      */
     private void Start(string map)
     {
-        
+
         _gameMap = new GameMap(map);
         
         var player = new Player(new Vector2(33,18),_gameMap.Forms[0], _gameMap.Forms[1]);
@@ -59,7 +59,11 @@ public class MainGame
         var keyHandler = new Thread(playerHandler.ReadKeyData);
         keyHandler.Start();
         
+        var creditThread = new Thread(Gui.Credits);
         SoundController.StartBackgroundMusic(Screen.Start);
+
+        player.Stats.Seed = _gameMap.Seed;
+        
 
         while (Updater.Active)
         {
@@ -83,14 +87,13 @@ public class MainGame
                     Gui.DrawStartScreen();
                     break;
                 }
-                case Screen.Restart:
+                case Screen.End:
                 {
-                    //TODO: make restart screen }
+                    Gui.DrawEndScreen(player, creditThread);
                     break;
                 }
             }
             Updater.Update = false;
         }
-        Gui.DrawEndScreen(Updater.Win);
     }
 }

@@ -1,4 +1,6 @@
-﻿using Passport_A38.core.game.gameobject;
+﻿using System.Xml;
+using Passport_A38.core.game.gameobject;
+using Passport_A38.core.game.utility;
 
 namespace Passport_A38.core.game.map;
 
@@ -16,10 +18,21 @@ public class GameMap
         {5,"black"},
         {6,"white"}
     };
-    private const int seed=5;
+
+    public static Dictionary<string, Difficulty> DifficultyDictionary = new()
+    {
+        {"easy",Difficulty.easy},
+        {"normal",Difficulty.normal},
+        { "hard" ,Difficulty.hard},
+        { "madhouse" ,Difficulty.madhouse}
+    };
+
+    public int Seed { get; set; }
+    public const int width = 35;
 
     public GameMap(string inputTiles)
     {
+        Seed = 0;
         for (int k = 0, t = 0; k < _tiles.GetLength(0); k++)
         {
             for (var i = 0; i < _tiles.GetLength(1); i++, t++)
@@ -28,10 +41,10 @@ public class GameMap
             }
         }
 
-        var random = new Random(seed);
+        var random = new Random(Seed);
         var randNum = random.Next(3,21);
         _forms.Add(new Form(0,"red","0:a"));    //first counter is always the first one you need to go to
-        for (var i = 1; i < randNum; i++)
+        for (var i = 1; i < 2; i++)
         {
             Form form = new();
             var temp = random.Next(1,8)+":"+(random.Next(0,2)==0? "a":"b");    //from first to most upper floor left/right
@@ -92,6 +105,37 @@ public class GameMap
     {
         return _tiles[(int) player.Pos.Y, (int) player.Pos.X - 1] == ']' ||
                _tiles[(int) player.Pos.Y, (int) player.Pos.X + 1] == '[';
+    }
+
+    public void Restart(int seed, Difficulty difficulty,string inputTiles)  //TODO: Fix
+    {
+        Seed = seed;
+        for (int k = 0, t = 0; k < _tiles.GetLength(0); k++)
+        {
+            for (var i = 0; i < _tiles.GetLength(1); i++, t++)
+            {
+                _tiles[k, i] = inputTiles[t];
+            }
+        }
+
+        var random = new Random(Seed);
+        var randNum = random.Next(3,21);
+        _forms.Add(new Form(0,"red","0:a"));    //first counter is always the first one you need to go to
+        for (var i = 1; i < 2; i++)
+        {
+            Form form = new();
+            var temp = random.Next(1,8)+":"+(random.Next(0,2)==0? "a":"b");    //from first to most upper floor left/right
+            while (_forms[i - 1].Counter.Equals(temp))
+            {
+                temp = random.Next(1,8)+":"+(random.Next(0,2)==0? "a":"b");
+            }
+
+            form.Counter = temp;
+            form.Colour = _colours[random.Next(0,7)];
+            form.Number = i;
+
+            _forms.Add(form);
+        }
     }
 
     public char[,] Tiles => _tiles;
