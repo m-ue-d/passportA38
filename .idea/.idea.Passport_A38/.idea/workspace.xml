@@ -5,29 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8a802db6-e5bf-4c15-84a1-1552beeb950e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Passport_A38/core/game/utility/Difficulty.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Passport_A38/core/game/utility/Properties.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Passport_A38/core/game/utility/Stats.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Passport_A38/resources/credits.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Passport_A38/resources/startup.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Passport_A38/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Passport_A38/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_10_2022_22_43_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Passport_A38/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_10_2022_22_43__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Passport_A38/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Passport_A38/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Passport_A38/Passport_A38.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Passport_A38/Passport_A38.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Passport_A38/bin/Debug/net6.0/Passport_A38.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Passport_A38/bin/Debug/net6.0/Passport_A38.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Passport_A38/bin/Debug/net6.0/Passport_A38.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Passport_A38/bin/Debug/net6.0/Passport_A38.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Passport_A38/bin/Debug/net6.0/Passport_A38.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Passport_A38/bin/Debug/net6.0/Passport_A38.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Passport_A38/core/game/MainGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Passport_A38/core/game/MainGame.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Passport_A38/core/game/controller/PlayerInputHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Passport_A38/core/game/controller/PlayerInputHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Passport_A38/core/game/controller/SoundController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Passport_A38/core/game/controller/SoundController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Passport_A38/core/game/controller/Updater.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Passport_A38/core/game/controller/Updater.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Passport_A38/core/game/gameobject/Form.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Passport_A38/core/game/utility/Form.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Passport_A38/core/game/gameobject/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Passport_A38/core/game/gameobject/Player.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Passport_A38/core/game/gui/Gui.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Passport_A38/core/game/gui/Gui.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Passport_A38/core/game/gui/Screen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Passport_A38/core/game/gui/Screen.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Passport_A38/core/game/map/GameMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Passport_A38/core/game/map/GameMap.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Passport_A38/core/game/utility/Properties.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Passport_A38/core/game/utility/Properties.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Passport_A38/obj/Debug/net6.0/Passport_A38.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/Passport_A38/obj/Debug/net6.0/Passport_A38.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Passport_A38/obj/Debug/net6.0/Passport_A38.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Passport_A38/obj/Debug/net6.0/Passport_A38.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Passport_A38/obj/Debug/net6.0/Passport_A38.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Passport_A38/obj/Debug/net6.0/Passport_A38.csproj.AssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Passport_A38/obj/Debug/net6.0/Passport_A38.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Passport_A38/obj/Debug/net6.0/Passport_A38.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Passport_A38/obj/Debug/net6.0/Passport_A38.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Passport_A38/obj/Debug/net6.0/Passport_A38.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Passport_A38/obj/Debug/net6.0/Passport_A38.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Passport_A38/obj/Debug/net6.0/Passport_A38.dll" afterDir="false" />
@@ -56,11 +47,6 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/56996bd5b7b025988834f7db72d610de6637f12f9a6dc6f25950f7f158ef3fc4/ConsolePal.Windows.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f9ce4c83216ebd9301c586f92494b2e1f3d4a7a1aa087579d9133547dc1c1e1/Vector_1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bf408839e35535896e3625c8578c2bfb7bf56ef7ab2c4549ae59c3a19db9ae/Console.cs" root0="SKIP_HIGHLIGHTING" />
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -84,7 +70,7 @@
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Passport_A38/bin/Debug/net6.0" />
       <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_EXTERNAL_CONSOLE" value="1" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
       <option name="PROJECT_PATH" value="$PROJECT_DIR$/Passport_A38/Passport_A38.csproj" />
@@ -112,6 +98,10 @@
       <workItem from="1666164508164" duration="2380000" />
       <workItem from="1666176125112" duration="4534000" />
       <workItem from="1666188484092" duration="8752000" />
+      <workItem from="1666446376617" duration="7129000" />
+      <workItem from="1666464404175" duration="3042000" />
+      <workItem from="1666523208413" duration="119000" />
+      <workItem from="1666778122949" duration="3445000" />
     </task>
     <task id="LOCAL-00001" summary="Added Background-Music">
       <created>1665780995459</created>

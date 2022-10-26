@@ -32,40 +32,61 @@ public class PlayerInputHandler
             {
                 case Screen.Game: 
                 {
+                    var oldPos = new Vector2(_player.Pos.X,_player.Pos.Y);
+                    Gui.UpdateAt(_player.Pos, new Vector2(Console.CursorLeft, Console.CursorTop), _map.Tiles[(int)_player.Pos.Y, (int)_player.Pos.X+1]); //get rid of input chars at Cursor
+                    Gui.UpdateAt(new Vector2(-1,0), new Vector2(0,0), ' '); //get rid of input chars at 0,0
                     switch (key)
                     {
                         case ConsoleKey.LeftArrow:
                         {
-                            if (_map.Tiles[(int) _player.Pos.Y, (int) _player.Pos.X - 1] is not '_' and not '^' and not 'v'
+                            if (_map.Tiles[(int) _player.Pos.Y, (int) _player.Pos.X - 1] is not '_' and not '^'
+                                and not 'v'
                                 and not 'X')
+                            {
+                                Gui.UpdatePlayerPosition(_player, oldPos, _map.Tiles[(int) oldPos.Y, (int) oldPos.X]);
                                 break;
+                            }
+
                             _player.Pos = Vector2.Add(_player.Pos, new Vector2(-1, 0));
-                            Updater.Update = true;
+                            Gui.UpdatePlayerPosition(_player, oldPos, _map.Tiles[(int) oldPos.Y, (int) oldPos.X]);
                             break;
                         }
                         case ConsoleKey.RightArrow:
                         {
-                            if (_map.Tiles[(int) _player.Pos.Y, (int) _player.Pos.X + 1] is not '_' and not '^' and not 'v'
+                            if (_map.Tiles[(int) _player.Pos.Y, (int) _player.Pos.X + 1] is not '_' and not '^'
+                                and not 'v'
                                 and not 'X')
+                            {
+                                Gui.UpdatePlayerPosition(_player, oldPos, _map.Tiles[(int) oldPos.Y, (int) oldPos.X]);
                                 break;
+                            }
+                            
                             _player.Pos = Vector2.Add(_player.Pos, new Vector2(1, 0));
-                            Updater.Update = true;
+                            Gui.UpdatePlayerPosition(_player, oldPos, _map.Tiles[(int) oldPos.Y, (int) oldPos.X]);
                             break;
                         }
                         case ConsoleKey.UpArrow:
                         {
                             if (_map.Tiles[(int) _player.Pos.Y, (int) _player.Pos.X] is not '^' and not 'X')
+                            {
+                                Gui.UpdatePlayerPosition(_player, oldPos, _map.Tiles[(int) oldPos.Y, (int) oldPos.X]);
                                 break;
+                            }
+
                             _player.Pos = Vector2.Add(_player.Pos, new Vector2(0, -2));
-                            Updater.Update = true;
+                            Gui.UpdatePlayerPosition(_player, oldPos, _map.Tiles[(int) oldPos.Y, (int) oldPos.X]);
                             break;
                         }
                         case ConsoleKey.DownArrow:
                         {
                             if (_map.Tiles[(int) _player.Pos.Y, (int) _player.Pos.X] is not 'v' and not 'X')
+                            {
+                                Gui.UpdatePlayerPosition(_player, oldPos, _map.Tiles[(int) oldPos.Y, (int) oldPos.X]);
                                 break;
+                            }
+
                             _player.Pos = Vector2.Add(_player.Pos, new Vector2(0, 2));
-                            Updater.Update = true;
+                            Gui.UpdatePlayerPosition(_player, oldPos, _map.Tiles[(int) oldPos.Y, (int) oldPos.X]);
                             break;
                         }
                         case ConsoleKey.E:
@@ -78,7 +99,6 @@ public class PlayerInputHandler
                                 _player.Counter = counter;
                                 Updater.Update = true;
                             }
-
                             break;
                         }
                         case ConsoleKey.X:
@@ -93,6 +113,7 @@ public class PlayerInputHandler
                 }
                 case Screen.Counter:
                 {
+                    Gui.UpdateAt(new Vector2(-1,0), new Vector2(0,0), ' '); //get rid of input chars at 0,0
                     switch (key)
                     {
                         case ConsoleKey.F:
@@ -219,8 +240,6 @@ public class PlayerInputHandler
                     break;
                 }
             }
-
-            Thread.Sleep(100);
         }while (!Updater.End);
     }
 }

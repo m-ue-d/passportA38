@@ -35,6 +35,7 @@ public class MainGame
             + "[ (°: ]_X______________^____[ :°) ]"
             + "|######zZT########################|"
             + "[ (°: ]_^_________________________>";    //TODO: This is the easy level. Make a hard one and select it by the level selector on the start screen (random level generation?)
+        
 
         var main = new MainGame();
         
@@ -48,10 +49,10 @@ public class MainGame
     private void Start(string map)
     {
 
-        _gameMap = new GameMap(map);
+        _gameMap = new GameMap(map,35); //TODO: make variable
         
-        var player = new Player(new Vector2(33,18),_gameMap.Forms[0], _gameMap.Forms[1]);
-
+        var player = new Player(new Vector2(_gameMap.Tiles.GetLength(1)-2,_gameMap.Tiles.GetLength(0)-1),_gameMap.Forms[0], _gameMap.Forms[1]);
+        
         objects.Add(player);
         
         //initialize key-handler
@@ -63,8 +64,9 @@ public class MainGame
         SoundController.StartBackgroundMusic(Screen.Start);
 
         player.Stats.Seed = _gameMap.Seed;
-        
 
+        Console.CursorVisible = false;  //make cursor invisible
+        
         while (Updater.Active)
         {
             //draw screen

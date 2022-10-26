@@ -28,7 +28,7 @@ public static class SoundController
         {
             Screen.Game => AppDomain.CurrentDomain.BaseDirectory + "\\resources\\music\\Building.wav",
             Screen.Start => AppDomain.CurrentDomain.BaseDirectory + "\\resources\\music\\Title.wav",
-            Screen.Counter => AppDomain.CurrentDomain.BaseDirectory + "\\resources\\music\\Building.wav",
+            //Screen.Counter => AppDomain.CurrentDomain.BaseDirectory + "\\resources\\music\\Building.wav",
             _ => AppDomain.CurrentDomain.BaseDirectory + "\\resources\\music\\Title.wav"
         };
 

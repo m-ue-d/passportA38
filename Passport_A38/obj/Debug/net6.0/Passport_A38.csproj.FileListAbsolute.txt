@@ -76,3 +76,5 @@ C:\Users\fabia\Documents\Schule\3_AHIF\POS\Workspace\Passport_A38\Passport_A38\b
 C:\Users\fabia\Documents\Schule\3_AHIF\POS\Workspace\Passport_A38\Passport_A38\obj\Debug\net6.0\Passport_A38.csproj.CopyComplete
 C:\Users\fabia\Documents\Schule\3_AHIF\POS\Workspace\Passport_A38\Passport_A38\bin\Debug\net6.0\resources\credits.txt
 C:\Users\fabia\Documents\Schule\3_AHIF\POS\Workspace\Passport_A38\Passport_A38\bin\Debug\net6.0\resources\startup.properties
+C:\Users\Admin\RiderProjects\passportA-38\Passport_A38\bin\Debug\net6.0\resources\credits.txt
+C:\Users\Admin\RiderProjects\passportA-38\Passport_A38\bin\Debug\net6.0\resources\startup.properties

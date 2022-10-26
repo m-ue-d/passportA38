@@ -6,7 +6,7 @@ namespace Passport_A38.core.game.map;
 
 public class GameMap 
 {
-    private char[,] _tiles = new char[19, 35];
+    private readonly char[,] _tiles;
     private readonly List<Form> _forms = new();
     private readonly Dictionary<int, string> _colours = new()
     {
@@ -28,10 +28,15 @@ public class GameMap
     };
 
     public int Seed { get; set; }
-    public const int width = 35;
+    public static int Width;
+    public static int Height;
 
-    public GameMap(string inputTiles)
+    public GameMap(string inputTiles, int width)
     {
+        Width = width;
+        Height = inputTiles.Length / width;
+        _tiles = new char[Height, width];
+        
         Seed = 0;
         for (int k = 0, t = 0; k < _tiles.GetLength(0); k++)
         {

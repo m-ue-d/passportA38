@@ -1,5 +1,7 @@
 ﻿using System.Diagnostics.Tracing;
 using System.Globalization;
+using System.Numerics;
+using System.Runtime.InteropServices;
 using Passport_A38.core.game.controller;
 using Passport_A38.core.game.gameobject;
 using Passport_A38.core.game.map;
@@ -7,7 +9,7 @@ using Passport_A38.core.game.utility;
 
 namespace Passport_A38.core.game.gui;
 
-public static class Gui
+public static class Gui //TODO: Optimize (less if statements and individual char placement)
 {
 
     public static Screen Screen { get; set; } = Screen.Start;
@@ -39,10 +41,9 @@ public static class Gui
 
     public static void Credits(object? stats)
     {
-        if (stats is not Stats) { return; }
-        var playerStats = (Stats)stats;
-        
-        
+        if (stats is not Stats playerStats) { return; }
+
+
         var lines = File.ReadAllLines(AppDomain.CurrentDomain.BaseDirectory +"\\resources\\credits.txt");
         foreach (var line in lines)
         {
@@ -63,7 +64,7 @@ public static class Gui
             var temp = line.Split("%"+i);
             var x = temp[0]+s;
                 
-            while (x.Length<GameMap.width-1) {x += " ";}
+            while (x.Length<GameMap.Width-1) {x += " ";}
             x += "#";
 
             Console.WriteLine(x);
@@ -77,6 +78,7 @@ public static class Gui
     public static void DrawStartScreen()
     {
         Console.Clear();
+        Console.SetCursorPosition(0,0);
         
         var lines = File.ReadAllLines(AppDomain.CurrentDomain.BaseDirectory + "\\resources\\screens\\start.guiscreen");
         foreach (var line in lines)
@@ -88,69 +90,125 @@ public static class Gui
     public static void DrawCounterScreen(string counter,Player player)
     {
         Console.Clear();
+        Console.SetCursorPosition(0,0);
         
         var lines = File.ReadAllLines(AppDomain.CurrentDomain.BaseDirectory + "\\resources\\screens\\0-a.guiscreen");
         
-        Console.WriteLine("Score: "+player.Stats.Score+", InteractionState: "+player.InteractionState+", Counter: "+player.Counter+", Next: "+player.Next.Counter+", Needed: "+player.Needed.Counter);
+        Console.WriteLine("Score: "+player.Stats.Score+", InteractionState: "+player.InteractionState+", Counter: "+player.Counter+", Next: "+player.Next.Counter+", Needed: "+player.Needed.Counter);  //debugging
         Console.WriteLine();
 
         var first = true;
         foreach (var line in lines)
         {
-            if (player.InteractionState == 1)
+            switch (player.InteractionState)
             {
-                var x = line;
-                
-                if (player.Next.Number == -1 && player.Counter.Equals("0:a"))   //last counter
+                case 1:
                 {
-                    if (x.Contains('~'))
+                    var x = line;
+                
+                    if (player.Next.Number == -1 && player.Counter.Equals("0:a"))   //last counter
                     {
-                        if (first)
+                        if (x.Contains('~'))
                         {
-                            x = "# [counter:] Hold on, i need to   #\n# ask the others first...         #";
-                            first = false;
+                            if (first)
+                            {
+                                x = "# [counter:] Hold on, i need to   #\n# ask the others first...         #";
+                                first = false;
+                            }
+                            else
+                            {
+                                x = "#                                 #";
+                            }
                         }
-                        else
+                        else if (x.Contains('%'))
+                        {
+                            x = "# done: (f)                       #";
+                        }
+                    }
+                    else if (counter.Equals(player.Needed.Counter)) //needed counter
+                    {
+                        if (x.Contains('°'))
+                        {
+
+                            x = x.Replace("°", player.Next.Colour);
+                            while (x.Length < GameMap.Width)
+                            {
+                                x = x.Insert(x.Length - 2, " ");
+                            }
+                        }
+                        else if (x.Contains('*'))
+                        {
+                            x = x.Replace("*", player.Next.Counter);
+                            while (x.Length < GameMap.Width)
+                            {
+                                x = x.Insert(x.Length - 2, " ");
+                            }
+                        }
+
+                        if (x.Contains('~'))
+                        {
+                            x = x.Replace("~", " ");
+                        }
+                        else if (x.Contains('%'))
+                        {
+                            x = x.Replace("%", " ");
+                        }
+                    }
+                    else
+                    {
+                        if (x.Contains('~'))
+                        {
+                            if (first)
+                            {
+                                x = "# [counter:] Sorry, wrong counter!#";
+                                first = false;
+                            }
+                            else
+                            {
+                                x = "#                                 #";
+                            }
+                        }
+                        else if (x.Contains('%'))
                         {
                             x = "#                                 #";
                         }
                     }
-                    else if (x.Contains('%'))
-                    {
-                        x = "# done: (f)                       #";
-                    }
+                    Console.WriteLine(x);
+                    break;
                 }
-                else if (counter.Equals(player.Needed.Counter)) //needed counter
+                //start of conversation
+                case 0:
                 {
-                    if (x.Contains('°'))
-                    {
-
-                        x = x.Replace("°", player.Next.Colour);
-                        while (x.Length < GameMap.width)
-                        {
-                            x = x.Insert(x.Length - 2, " ");
-                        }
-                    }
-                    else if (x.Contains('*'))
-                    {
-                        x = x.Replace("*", player.Next.Counter);
-                        while (x.Length < GameMap.width)
-                        {
-                            x = x.Insert(x.Length - 2, " ");
-                        }
-                    }
-
+                    var x = line;
                     if (x.Contains('~'))
                     {
-                        x = x.Replace("~", " ");
+                        x = (first? "# Hello, how can I help you Sir?  #":"#                                 #");
+                        first = false;
                     }
                     else if (x.Contains('%'))
                     {
-                        x = x.Replace("%", " ");
+                        if (player.Next.Number == -1 && player.Counter.Equals("0:a")) //end of search (21 is the line, where the text will be displayed)
+                        {
+                            x = "# ask: Could you please hand me a #\n#      copy of permit 39? (f)     #";
+                        }
+                        else if(player.Needed.Number == 0 && player.Counter.Equals("0:a"))
+                        {
+                            x = "# ask: Could you please hand me a #\n#      copy of permit 38? (f)     #";
+                        }
+                        else
+                        {
+                            x = "# ask: Could you please hand me a #\n# copy of permit " + player.Needed.Colour + "-" + player.Needed.Number+" (f)";
+                            var temp = x[x.IndexOf("\n", StringComparison.Ordinal)..];
+                            for (var i=0;i<line.Length-(temp.Length);i++) { x +=" "; }
+                            x += "#";
+                        }
                     }
+                    Console.WriteLine(x);
+                    break;
                 }
-                else
+                default:
                 {
+                    var x = line;
                     if (x.Contains('~'))
                     {
                         if (first)
@@ -167,59 +225,28 @@ public static class Gui
                     {
                         x = "#                                 #";
                     }
-                }
-                Console.WriteLine(x);
-            }
-            else if(player.InteractionState==0) //start of conversation
-            {
-                var x = line;
-                if (x.Contains('~'))
-                {
-                    x = (first? "# Hello, how can I help you Sir?  #":"#                                 #");
-                    first = false;
-                }
-                else if (x.Contains('%'))
-                {
-                    if (player.Next.Number == -1 && player.Counter.Equals("0:a")) //end of search (21 is the line, where the text will be displayed)
-                    {
-                        x = "# ask: Could you please hand me a #\n#      copy of permit 39? (f)     #";
-                    }
-                    else if(player.Needed.Number == 0 && player.Counter.Equals("0:a"))
-                    {
-                        x = "# ask: Could you please hand me a #\n#      copy of permit 38? (f)     #";
-                    }
-                    else
-                    {
-                        x = "# ask: Could you please hand me a #\n# copy of permit " + player.Needed.Colour + "-" + player.Needed.Number+" (f)";
-                        var temp = x[x.IndexOf("\n", StringComparison.Ordinal)..];
-                        for (var i=0;i<line.Length-(temp.Length);i++) { x +=" "; }
-                        x += "#";
-                    }
-                }
-                Console.WriteLine(x);
-            }
-            else{
-                var x = line;
-                if (x.Contains('~'))
-                {
-                    if (first)
-                    {
-                        x = "# [counter:] Sorry, wrong counter!#";
-                        first = false;
-                    }
-                    else
-                    {
-                        x = "#                                 #";
-                    }
-                }
-                else if (x.Contains('%'))
-                {
-                    x = "#                                 #";
-                }
 
-                Console.WriteLine(x);
+                    Console.WriteLine(x);
+                    break;
+                }
             }
         }
+        Console.SetCursorPosition(0,0); //reset cursor
+    }
+
+    public static void UpdatePlayerPosition(Player p, Vector2 oldPos, char replacement)
+    {
+        Console.SetCursorPosition((int)oldPos.X,(int)oldPos.Y);
+        Console.Write(replacement);
+        Console.SetCursorPosition((int)p.Pos.X,(int)p.Pos.Y);
+        Console.Write(p.Character);
+    }
+    public static void UpdateAt(Vector2 after, Vector2 position, char replacement)
+    {
+
+        Console.SetCursorPosition((int)position.X>0?(int)position.X-1:0,(int)position.Y);
+        Console.Write(replacement);
+        Console.SetCursorPosition((int)after.X+1,(int)after.Y);
     }
 
     public static void DrawGameScreen(GameMap map, List<GameObject> inputObjects)
@@ -258,20 +285,13 @@ public static class Gui
             return;
         for (var i = 0; i < map.Forms.Count; i++)
         {
-            if (i < player.Stats.Score)
-            {
-                Console.Write("+");
-            }
-            else
-            {
-                Console.Write("0");
-            }
+            Console.Write(i < player.Stats.Score ? "+" : "0");
         }
         //info:
         Console.WriteLine();
-        //Console.WriteLine("Next form: "+player.Needed.Counter);
         Console.WriteLine("move: (arrow keys), interact: (e)  ");
-
+        
+        Console.SetCursorPosition(0,0); //reset cursor
     }
 
     /*TODO: Parse form numbers to roman when asking for form x

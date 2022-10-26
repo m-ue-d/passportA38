@@ -160,26 +160,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\fabia\\.nuget\\packages\\": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\fabia\\Documents\\Schule\\3_AHIF\\POS\\Workspace\\Passport_A38\\Passport_A38\\Passport_A38.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\RiderProjects\\passportA-38\\Passport_A38\\Passport_A38.csproj",
       "projectName": "Passport_A38",
-      "projectPath": "C:\\Users\\fabia\\Documents\\Schule\\3_AHIF\\POS\\Workspace\\Passport_A38\\Passport_A38\\Passport_A38.csproj",
-      "packagesPath": "C:\\Users\\fabia\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\fabia\\Documents\\Schule\\3_AHIF\\POS\\Workspace\\Passport_A38\\Passport_A38\\obj\\",
+      "projectPath": "C:\\Users\\Admin\\RiderProjects\\passportA-38\\Passport_A38\\Passport_A38.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Admin\\RiderProjects\\passportA-38\\Passport_A38\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\fabia\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -219,7 +217,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }
