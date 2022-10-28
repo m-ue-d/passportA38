@@ -197,7 +197,7 @@ public static class Gui //TODO: Optimize (less if statements and individual char
                         }
                         else
                         {
-                            x = "# ask: Could you please hand me a #\n# copy of permit " + player.Needed.Colour + "-" + player.Needed.Number+" (f)";
+                            x = "# ask: Could you please hand me a #\n# copy of permit " + player.Needed.Colour + "-" + Utility.IntToRoman(player.Needed.Number) + " (f)";
                             var temp = x[x.IndexOf("\n", StringComparison.Ordinal)..];
                             for (var i=0;i<line.Length-(temp.Length);i++) { x +=" "; }
                             x += "#";
@@ -293,34 +293,4 @@ public static class Gui //TODO: Optimize (less if statements and individual char
         
         Console.SetCursorPosition(0,0); //reset cursor
     }
-
-    /*TODO: Parse form numbers to roman when asking for form x
-     * Parses an integer value to its roman counterpart.
-     * I : 1
-     * V : 5
-     * X : 10
-     * L : 50
-     * C : 100
-     * D : 500
-     * M : 1000
-     */
-    /*public static string IntToRoman(int x)
-    {
-        var roman = "";
-        while (x>=1000) //that's the easy part
-        {
-            roman += "M";
-            x -= 1000;
-        }
-            
-        var temp="";    
-        while (x>=100)  //that's nuts
-        {
-            temp += "";
-        }
-        if(temp){
-            
-        }
-
-    }*/
 }
