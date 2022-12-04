@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8a802db6-e5bf-4c15-84a1-1552beeb950e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Passport_A38/core/game/utility/Utility.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Passport_A38/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Passport_A38/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Passport_A38/core/game/gui/Gui.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Passport_A38/core/game/gui/Gui.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Passport_A38/bin/Debug/net6.0/Passport_A38.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Passport_A38/bin/Debug/net6.0/Passport_A38.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Passport_A38/bin/Debug/net6.0/Passport_A38.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Passport_A38/bin/Debug/net6.0/Passport_A38.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Passport_A38/core/game/utility/Utility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Passport_A38/core/game/utility/Utility.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Passport_A38/obj/Debug/net6.0/Passport_A38.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Passport_A38/obj/Debug/net6.0/Passport_A38.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Passport_A38/obj/Debug/net6.0/Passport_A38.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Passport_A38/obj/Debug/net6.0/Passport_A38.pdb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +39,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File" value="Config" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
+    <property name="settings.editor.selected.configurable" value="RiderNuGetOptionsPageId" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
@@ -77,7 +80,14 @@
       <workItem from="1666464404175" duration="3042000" />
       <workItem from="1666523208413" duration="119000" />
       <workItem from="1666778122949" duration="3661000" />
-      <workItem from="1666948936261" duration="5001000" />
+      <workItem from="1666948936261" duration="5591000" />
+      <workItem from="1666970006537" duration="209000" />
+      <workItem from="1666970416735" duration="123000" />
+      <workItem from="1667045895743" duration="127000" />
+      <workItem from="1667074243314" duration="564000" />
+      <workItem from="1667078984915" duration="17000" />
+      <workItem from="1667079021304" duration="9000" />
+      <workItem from="1667136301921" duration="103000" />
     </task>
     <task id="LOCAL-00001" summary="Added Background-Music">
       <created>1665780995459</created>
@@ -100,7 +110,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666781782842</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Int to Roman">
+      <created>1666968001108</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1666968001108</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -126,6 +143,7 @@
     <MESSAGE value="Added Background-Music" />
     <MESSAGE value="funky main theme" />
     <MESSAGE value="Disabled screen flashing (mostly)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Disabled screen flashing (mostly)" />
+    <MESSAGE value="Int to Roman" />
+    <option name="LAST_COMMIT_MESSAGE" value="Int to Roman" />
   </component>
 </project>
